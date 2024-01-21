@@ -8,7 +8,7 @@
                 <div class="card shadow-sm">
                     <img src="/media/models/Untitled.jpg" class="bd-placeholder-img card-img-top" width="100%" height="225" alt="Thumbnail">
                     <div class="card-body">
-                         <a href="{% url 'shoping:product' object.pk %}" class="btn btn-primary my-3">{{ object.name }}</a>
+                         <a href="{% url 'shoping:product_list' object.pk %}" class="btn btn-primary my-3">{{ object.name }}</a>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <p class="card-text">{{ object.description }}</p>
@@ -19,5 +19,11 @@
             </div>
         {% endfor %}
     </div>
-
+    <footer class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="{% url 'shoping:reviews' %}" style="font-size: 25px" class=" btn-outline-danger ">отзывы</a>
+    </p>
+    </div>
+</footer>
 {% endblock %}

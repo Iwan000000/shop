@@ -1,0 +1,40 @@
+{% extends 'shoping/base.html' %}
+{% load mu_tags %}
+{% block content %}
+
+    <div class="col-md-8">
+        <p style="font-size: 20px; color: #ff0033;">Хотите удалить?</p>
+        <div class="col">
+        <div class="container-fluid">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-1 g-3">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <img src="{% mediapath object.preview %}" style="width: 410px;height: 300px;"
+                             class="bd-placeholder-img card-img-top" width="100%"
+                             height="225" alt="Thumbnail">
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <p class="card-text" style="width: 100px;height: 20px;">{{ object.title }}</p>
+                            <p class="card-text" style="width: 100%; max-width: 1000px; height: 300px; overflow: auto;">{{ object.content }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                </div>
+                                <small class="text-body-secondary">{{ object.number_of_views }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-outline-danger">удалить</button>
+
+                        <a href="{% url 'shoping:reviews'%}" type="button" class="btn btn-sm btn-outline-success">отмена</a>
+                        </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

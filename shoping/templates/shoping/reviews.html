@@ -1,0 +1,52 @@
+{% extends 'shoping/base.html' %}
+{% load mu_tags %}
+{% block content %}
+
+
+    <a href="{% url 'shoping:all_reviews' %}" type="button"
+       class="btn btn-sm btn-outline-success">просмотреть все отзывы
+    </a>
+        <h1 class="container text-center pt-5">
+            отзывы
+        </h1>
+
+        <div class="py-5">
+            <div class="container">
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <div class="col-12">
+                        <a href="{% url 'shoping:reviews_create' %}" class="btn btn-primary ">написать отзыв</a>
+                    </div>
+
+                    {% for object in object_list %}
+
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img src="{% mediapath object.preview %}" alt="image" height=200px width=300px>
+                                <div class="card-body">
+                                    <p class="card-text">{{ object.title }} ({{ object.slug }})</p>
+                                    <p class="card-text">{{ object.content|slice:":100" }}</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+
+                                            <a href="{% url 'shoping:reviews_detail' object.pk %}" type="button"
+                                               class="btn btn-sm btn-outline-secondary">просмотреть
+                                            </a>
+
+                                        </div>
+                                        <small class="text-body-secondary">
+                                            просмотры: {{ object.number_of_views }} </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+
+
+{% endblock %}

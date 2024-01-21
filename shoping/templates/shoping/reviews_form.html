@@ -1,0 +1,25 @@
+{% extends 'shoping/base.html' %}
+{% load mu_tags %}
+{% block content %}
+
+    <form action="
+                 {% if object %}
+                 {% url 'shoping:reviews_update' object.pk %}
+                 {% else %}
+                 {% url 'shoping:reviews_create' %}
+                 {% endif %}
+                 "
+          method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-sm btn-outline-success">
+            {% if object %}
+                редактировать
+            {% else %}
+                сохранить
+            {% endif %}
+        </button>
+
+    </form>
+
+{% endblock %}
