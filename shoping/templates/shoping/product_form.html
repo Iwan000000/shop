@@ -1,0 +1,65 @@
+{% extends 'shoping/base.html' %}
+{% load crispy_forms_tags %}
+
+{% load mu_tags %}
+{% block content %}
+
+    <form method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            {% if object %}
+                                редактировать продукт
+                            {% else %}
+                                добавить продукт
+                            {% endif %}
+                        </h2>
+
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            {% for version_form in formset.forms %}
+                                {% if version_form.instance.version_indicator %}
+                                    <p> активная версия
+                                        №: {{ version_form.instance.version_number }}
+                                        Название версии: {{ version_form.instance.version_name }}
+                                    </p>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-success">
+                            {% if object %}
+                                редактировать
+                            {% else %}
+                                сохранить
+                            {% endif %}
+                        </button>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            версия
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        {{ formset.management_form }}
+                        {% for form in formset.forms %}
+                            {{ form.as_p }}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
