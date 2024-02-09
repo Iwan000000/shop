@@ -12,6 +12,7 @@ from pytils.translit import slugify
 
 
 
+
 class CategoryListView(ListView):
     model = Category
     extra_context = {
@@ -114,6 +115,8 @@ class ReviewsDetailView(DetailView):
 
         return obj
 
+
+
 class ProductUpdateView(UpdateView):
 
     model = Product
@@ -150,5 +153,24 @@ class ProductCreateView(CreateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('shoping:category_list')
+
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.editor = self.request.user
+        self.object.save()
+
+        return super().form_valid(form)
+
+
+    def create_product(request):
+        if request.method == 'POST':
+            form = ProductForm(request.POST, request.FILES)
+            if form.is_valid():
+                product = form.save(commit=False)
+                product.save()
+                return redirect('product_detail', pk=product.pk)
+        else:
+            form = ProductForm()
+        return render(request, 'create_product.html', {'form': form})
 
 

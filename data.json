@@ -24,68 +24,250 @@
     }
   },
   {
-    "model": "shoping.product",
-    "pk": 1,
-    "fields": {
-      "name": "толстый край",
-      "description": "на кости",
-      "image": "",
-      "category": 2,
-      "price_for_one": 579,
-      "date_of_creatio": "2024-01-14T12:56:01.232Z",
-      "last_modified_date": "2024-01-14T12:56:01.232Z"
-    }
-  },
-  {
-    "model": "shoping.product",
-    "pk": 2,
-    "fields": {
-      "name": "окорок",
-      "description": "без кости",
-      "image": "",
-      "category": 1,
-      "price_for_one": 369,
-      "date_of_creatio": "2024-01-14T12:56:26.708Z",
-      "last_modified_date": "2024-01-14T12:57:15.626Z"
-    }
-  },
-  {
-    "model": "shoping.product",
-    "pk": 3,
-    "fields": {
-      "name": "котлетки",
-      "description": "на кости",
-      "image": "",
-      "category": 1,
-      "price_for_one": 349,
-      "date_of_creatio": "2024-01-14T12:57:00.491Z",
-      "last_modified_date": "2024-01-14T12:57:06.780Z"
-    }
-    },
-  {
-    "model": "shoping.product",
+    "model": "shoping.category",
     "pk": 4,
     "fields": {
-      "name": "окорок",
-      "description": "",
-      "image": "",
-      "category": 3,
-      "price_for_one": 269,
-      "date_of_creatio": "2024-01-14T12:57:00.491Z",
-      "last_modified_date": "2024-01-14T12:57:06.780Z"
+      "name": "индейка",
+      "description": "диетическая"
+    }
+  },
+  {
+    "model": "shoping.category",
+    "pk": 5,
+    "fields": {
+      "name": "телятина",
+      "description": "диетическая"
+    }
+  },
+  {
+    "model": "shoping.category",
+    "pk": 6,
+    "fields": {
+      "name": "индейка",
+      "description": "диетическая"
+    }
+  },
+  {
+    "model": "shoping.category",
+    "pk": 7,
+    "fields": {
+      "name": "телятина",
+      "description": "диетическая"
     }
   },
   {
     "model": "shoping.product",
+    "pk": 9,
+    "fields": {
+      "name": "грудинка",
+      "description": "на ребре\r\nСвиная грудинка — часть мышечной ткани на ребрах. Мясо грудинки часто срезают с костей и жарят, тушат или запекают, а ребра готовят отдельно, запекая или жаря на гриле. Часто свиную грудинку вялят или коптят — или сначала варят, а потом копят, — а затем добавляют в поджаренном виде в супы,",
+      "image": "models/f_6254598a066cd.jpg",
+      "category": 1,
+      "price_for_one": 339,
+      "date_of_creatio": "2024-01-14T15:11:01.439Z",
+      "last_modified_date": "2024-02-02T21:21:52.158Z"
+    }
+  },
+  {
+    "model": "shoping.product",
+    "pk": 10,
+    "fields": {
+      "name": "бекон",
+      "description": "без кости",
+      "image": "models/Untitled.jpg",
+      "category": 1,
+      "price_for_one": 339,
+      "date_of_creatio": "2024-01-14T15:11:01.442Z",
+      "last_modified_date": "2024-02-02T19:14:22.489Z"
+    }
+  },
+  {
+    "model": "shoping.product",
+    "pk": 11,
+    "fields": {
+      "name": "филе грудки",
+      "description": "без кости",
+      "image": "models/meat_jGvz6Sg.jpg",
+      "category": 3,
+      "price_for_one": 420,
+      "date_of_creatio": "2024-01-14T15:11:01.443Z",
+      "last_modified_date": "2024-01-19T18:22:21.177Z"
+    }
+  },
+  {
+    "model": "shoping.product",
+    "pk": 12,
+    "fields": {
+      "name": "вырезка",
+      "description": "мягкая и сочная",
+      "image": "models/Untitled_7uq2Iu1.jpg",
+      "category": 1,
+      "price_for_one": 539,
+      "date_of_creatio": "2024-01-19T10:24:28.264Z",
+      "last_modified_date": "2024-02-05T08:46:18.251Z"
+    }
+  },
+  {
+    "model": "shoping.product",
+    "pk": 13,
+    "fields": {
+      "name": "толстый край",
+      "description": "вкуснотища",
+      "image": "models/Untitled_h7wPUgo.jpg",
+      "category": 2,
+      "price_for_one": 589,
+      "date_of_creatio": "2024-01-20T12:18:26.397Z",
+      "last_modified_date": "2024-01-20T12:18:26.397Z"
+    }
+  },
+  {
+    "model": "shoping.product",
+    "pk": 22,
+    "fields": {
+      "name": "окорок",
+      "description": "очень вкусный",
+      "image": "models/meat_mkwZnJB.jpg",
+      "category": 3,
+      "price_for_one": 249,
+      "date_of_creatio": "2024-02-05T08:47:59.149Z",
+      "last_modified_date": "2024-02-05T08:47:59.149Z"
+    }
+  },
+  {
+    "model": "shoping.reviews",
+    "pk": 2,
+    "fields": {
+      "title": "TEST 2",
+      "slug": "test-2",
+      "content": "QQQQQQQQ",
+      "preview": "preview/meat.jpg",
+      "date_of_creation": "2024-01-20T11:41:26.467Z",
+      "publication_sign": true,
+      "number_of_views": 7
+    }
+  },
+  {
+    "model": "shoping.reviews",
+    "pk": 3,
+    "fields": {
+      "title": "тест 3",
+      "slug": "",
+      "content": "тест 1",
+      "preview": "preview/meat_jk4t1iE.jpg",
+      "date_of_creation": "2024-01-20T18:50:12.250Z",
+      "publication_sign": false,
+      "number_of_views": 15
+    }
+  },
+  {
+    "model": "shoping.reviews",
+    "pk": 4,
+    "fields": {
+      "title": "тест 4",
+      "slug": "",
+      "content": "ПРОЦЕСС ПРИГОТОВЛЕНИЯ\r\nЧаша 1\r\nОчистите лук и морковь, затем порубите соломкой.\r\nФиле утиной грудки нарежьте полосками.\r\nВ чашу мультиварки влейте масло и соевый соус, добавьте морковь и лук. Выберите программу «GARLYN Шеф», время приготовления 20 минут. Обжаривайте овощи, периодически помешивая.\r\nЗа 15 минут до окончания работы программы добавьте в чашу нарезанное мясо утки, обжаривайте смесь, периодически помешивая.\r\nИз половинки свежего апельсина выжмите сок, а также снимите немного цедры, мелко порубите её ножом.\r\nЗа 5 минут до готовности добавьте в чашу консервированный горошек, апельсиновый сок и измельчённую цедру. Тщательно перемешайте все ингредиенты и продолжайте готовить блюдо, периодически помешивая, до окончания работы программы.\r\nЧаша 2\r\nКартофель очистите и нарежьте крупными кубиками. Лисички хорошо промойте и обсушите с помощью бумажных полотенец. Нарежьте небольшими кусочками.\r\nВ чашу мультиварки влейте столовую ложку оливкового масла, выложите измельчённый картофель и грибы. Вы",
+      "preview": "",
+      "date_of_creation": "2024-01-20T18:57:10.040Z",
+      "publication_sign": false,
+      "number_of_views": 1
+    }
+  },
+  {
+    "model": "shoping.reviews",
     "pk": 5,
     "fields": {
-      "name": "крыло",
-      "description": "",
-      "image": "",
-      "category": 3,
-      "price_for_one": 269,
-      "date_of_creatio": "2024-01-14T12:57:00.491Z",
-      "last_modified_date": "2024-01-14T12:57:06.780Z"
+      "title": "тест 5",
+      "slug": "",
+      "content": "ПРОЦЕСС ПРИГОТОВЛЕНИЯ\r\nЧаша 1\r\nОчистите лук и морковь, затем порубите соломкой.\r\nФиле утиной грудки нарежьте полосками.\r\nВ чашу мультиварки влейте масло и соевый соус, добавьте морковь и лук. Выберите программу «GARLYN Шеф», время приготовления 20 минут. Обжаривайте овощи, периодически помешивая.\r\nЗа 15 минут до окончания работы программы добавьте в чашу нарезанное мясо утки, обжаривайте смесь, периодически помешивая.\r\nИз половинки свежего апельсина выжмите сок, а также снимите немного цедры, мелко порубите её ножом.\r\nЗа 5 минут до готовности добавьте в чашу консервированный горошек, апельсиновый сок и измельчённую цедру. Тщательно перемешайте все ингредиенты и продолжайте готовить блюдо, периодически помешивая, до окончания работы программы.\r\nЧаша 2\r\nКартофель очистите и нарежьте крупными кубиками. Лисички хорошо промойте и обсушите с помощью бумажных полотенец. Нарежьте небольшими кусочками.\r\nВ чашу мультиварки влейте столовую ложку оливкового масла, выложите измельчённый картофель и грибы. Выберите программу «Жарка», время приготовления 25 минут. Обжаривайте блюдо, периодически помешивая, до окончания работы программы.\r\nПодавайте в качестве гарнира к мясу. Приятного аппетита!",
+      "preview": "preview/f_6254598a066cd.jpg",
+      "date_of_creation": "2024-01-20T18:57:50.321Z",
+      "publication_sign": false,
+      "number_of_views": 2
+    }
+  },
+  {
+    "model": "shoping.reviews",
+    "pk": 6,
+    "fields": {
+      "title": "тест 6",
+      "slug": "",
+      "content": "тест 6",
+      "preview": "preview/Untitled.jpg",
+      "date_of_creation": "2024-01-20T19:05:40.864Z",
+      "publication_sign": false,
+      "number_of_views": 6
+    }
+  },
+  {
+    "model": "shoping.reviews",
+    "pk": 10,
+    "fields": {
+      "title": "домошка",
+      "slug": "domoshka",
+      "content": "тест",
+      "preview": "preview/meat_bGtVSOH.jpg",
+      "date_of_creation": "2024-01-21T09:29:29.719Z",
+      "publication_sign": true,
+      "number_of_views": 5
+    }
+  },
+  {
+    "model": "shoping.reviews",
+    "pk": 16,
+    "fields": {
+      "title": "3",
+      "slug": "3",
+      "content": "3",
+      "preview": "",
+      "date_of_creation": "2024-01-21T11:43:37.562Z",
+      "publication_sign": true,
+      "number_of_views": 2
+    }
+  },
+  {
+    "model": "shoping.reviews",
+    "pk": 17,
+    "fields": {
+      "title": "test",
+      "slug": "test",
+      "content": "11",
+      "preview": "",
+      "date_of_creation": "2024-01-21T11:45:13.968Z",
+      "publication_sign": true,
+      "number_of_views": 1
+    }
+  },
+  {
+    "model": "shoping.reviews",
+    "pk": 18,
+    "fields": {
+      "title": "тест",
+      "slug": "test",
+      "content": "12",
+      "preview": "",
+      "date_of_creation": "2024-01-21T11:47:34.725Z",
+      "publication_sign": true,
+      "number_of_views": 3
+    }
+  },
+  {
+    "model": "shoping.version",
+    "pk": 8,
+    "fields": {
+      "product": 9,
+      "version_number": "23",
+      "version_name": "ввв",
+      "version_indicator": true
+    }
+  },
+  {
+    "model": "shoping.version",
+    "pk": 9,
+    "fields": {
+      "product": 12,
+      "version_number": "12",
+      "version_name": "111",
+      "version_indicator": true
     }
   }
 ]

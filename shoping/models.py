@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
 
@@ -27,6 +28,9 @@ class Product (models.Model):
         price_for_one = models.IntegerField(default=10, verbose_name='цена за штуку')
         date_of_creatio = models.DateTimeField(auto_now_add=True)
         last_modified_date = models.DateTimeField(auto_now=True)
+
+
+        editor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE, verbose_name='редактор')
 
         def __str__(self):
            return f"{self.name}({self.category}) {self.price_for_one}"
@@ -66,3 +70,5 @@ class Version(models.Model):
     class Meta:
             verbose_name = "версия"
             verbose_name_plural = "версии"
+
+

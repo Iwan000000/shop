@@ -33,6 +33,7 @@
                     <div class="card-body">
                         <a href="{% url 'shoping:category_list' %}" class="btn btn-sm btn-outline-warning btn-block">добавить в
                             корзину</a>
+                         <p class="card-text">{{ object.editor|default:"без изменений" }}</p>
                         <div class="d-flex justify-content-between align-items-center">
                         </div>
                     </div>

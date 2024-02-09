@@ -8,7 +8,7 @@ from .models import Product, Version
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = '__all__'
+        exclude = ('editor',)
 
 
     def clean(self):
@@ -22,17 +22,6 @@ class ProductForm(forms.ModelForm):
                 raise forms.ValidationError('Нельзя добавлять запрещенные слова в название или описание продукта')
         return cleaned_data
 
-    def create_product(request):
-        if request.method == 'POST':
-            form = ProductForm(request.POST, request.FILES)
-            if form.is_valid():
-                product = form.save(commit=False)
-                # Дополнительные операции, если необходимо
-                product.save()
-                return redirect('product_detail', pk=product.pk)
-        else:
-            form = ProductForm()
-        return render(request, 'create_product.html', {'form': form})
 
 
 class VersionForm(forms.ModelForm):

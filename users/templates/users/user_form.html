@@ -1,0 +1,37 @@
+{% extends 'shoping/base.html' %}
+
+{% load mu_tags %}
+
+{% block content %}
+
+    <div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="text-center">
+                    {% if user.avatar %}
+                        <img src="{{ user.avatar.url }}" alt="avatar" class="img-fluid img-thumbnail mb-3"
+                             style="max-width: 400px; max-height: 400px;">
+                    {% else %}
+                        <p>Нет аватара</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h4 class="text-blue">профиль</h4>
+                <form method="POST" enctype="multipart/form-data" class="border p-4">
+                    <hr>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-sm btn-outline-success">
+                        сохранить
+                    </button>
+                    <a href="{% url 'users:forgot' %}" class="btn btn-sm btn-outline-danger">
+                        изменить пароль
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

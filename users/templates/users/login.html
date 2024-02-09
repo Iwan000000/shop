@@ -1,0 +1,37 @@
+{% extends 'shoping/base.html' %}
+
+{% load mu_tags %}
+
+{% block content %}
+
+    <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-6">
+                    <form method="POST" enctype="multipart/form-data" class="border p-4">
+
+                        <div class="row mb-3">
+                            <h4 class="text-blue">вход</h4>
+                            <div class="col-sm-2"></div>
+                            <hr>
+                            <div class="col-sm-10">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+
+                                <button href="{% url 'users:login' %}" class="btn btn-sm btn-outline-success">
+                                    войти
+                                </button>
+
+                                <a href="{% url 'users:forgot' %}" class="btn btn-sm btn-outline-danger">
+    изменить пароль
+</a>
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

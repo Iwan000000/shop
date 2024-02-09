@@ -2,7 +2,7 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -11,85 +11,98 @@
     <title>{{ title }}</title>
 
 
-
     <!-- Bootstrap core CSS -->
-<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
 
-  </head>
-  <body>
+</head>
+<body>
 
 <header>
-  <div class="collapse bg-dark" id="navbarHeader">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">меню</h4>
-          <p class="text-muted"> свяжитесь с нами.</p>
-            <a href="{% url 'shoping:product_create' %}" class="btn btn-primary my-2">добавить продукт</a>
-        </div>
-        <div class="col-sm-4 offset-md-1 py-4">
-          <h4 class="text-white">контакты</h4>
-          <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Twitter</a></li>
-            <li><a href="#" class="text-white"> Facebook</a></li>
-            <li><a href="#" class="text-white">Email</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="navbar navbar-dark bg-dark shadow-sm">
-    <div class="container">
-      <a href="#" class="navbar-brand d-flex align-items-center">
+    <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 py-4">
+                    <h4 class="text-white">меню</h4>
+                    <p class="text-muted"> свяжитесь с нами.</p>
+                    <a href="{% url 'shoping:product_create' %}" class="btn btn-primary my-2">добавить продукт</a>
 
-        <strong>меню</strong>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+                </div>
+                <div class="col-sm-4 offset-md-1 py-4">
+                    <h4 class="text-white">контакты</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Twitter</a></li>
+                        <li><a href="#" class="text-white"> Facebook</a></li>
+                        <li><a href="#" class="text-white">Email</a></li>
+
+                        {% csrf_token %}
+
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'users:logout' %}" class="btn btn-primary my-2">выйти</a>
+                            <li><a href="{% url 'users:profile' %}" class="text-white">профиль</a></li>
+                        {% else %}
+                            <a href="{% url 'users:login' %}" class="btn btn-primary my-2">войти</a>
+                            <li><a href="{% url 'users:register' %}" class="text-white">регистрация</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+
+                <strong>меню</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
 </header>
 
 <main>
 
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">{{ title }}</h1>
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">{{ title }}</h1>
 
-          <a href="#" class="btn btn-primary my-2">корзина</a>
+                <a href="#" class="btn btn-primary my-2">корзина</a>
 
-        </p>
-      </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+
+        </div>
     </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-        {% block content %}
-        {% endblock %}
-
-    </div>
-  </div>
 
 </main>
 
 
-    <p class="mb-1">&copy; дата</p>
-    <p class="mb-0"><a href="{% url 'shoping:category_list' %}">перейти на домашнию страницу</a>
+<p class="mb-1">&copy; дата</p>
+<p class="mb-0"><a href="{% url 'shoping:category_list' %}">перейти на домашнию страницу</a>
 
 <footer class="text-muted py-2">
-  <div class="container">
-    <p class="float-end mb-1">
+    <div class="container">
+        <p class="float-end mb-1">
         </p>
     </div>
 </footer>
 
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
 
-  </body>
+</body>
 
 </html>
