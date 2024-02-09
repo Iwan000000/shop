@@ -152,22 +152,8 @@ EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 
-EMAIL_HOST_USER = 'proffesor.09iwan@yandex.ru'
-EMAIL_HOST_PASSWORD = 'gtsrlkmahmedacxs'
-
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
-CACHE_ENABLED = os.getenv('CACHE_ENABLED') == '1'
-
-if CACHE_ENABLED is True:
-    CACHES = {
-        "default": {
-            "BACKEND": "django.core.cache.backends.redis.RedisCache",
-            "LOCATION": os.getenv('CACHE_LOCATION'),
-        }
-    }
-
-
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 
 CSRF_COOKIE_SECURE = False
