@@ -29,6 +29,7 @@ class Product (models.Model):
         date_of_creatio = models.DateTimeField(auto_now_add=True)
         last_modified_date = models.DateTimeField(auto_now=True)
 
+        is_published = models.BooleanField(default=False, verbose_name="публикация")
 
         editor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE, verbose_name='редактор')
 

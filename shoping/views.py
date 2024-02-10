@@ -5,11 +5,12 @@ from django.forms.models import inlineformset_factory
 from crispy_forms.helper import FormHelper
 
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 from shoping.models import Category, Product, Reviews, Version
 from shoping.forms import ProductForm, VersionForm
 from pytils.translit import slugify
-
 
 
 
@@ -117,10 +118,11 @@ class ReviewsDetailView(DetailView):
 
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
 
     model = Product
     form_class = ProductForm
+    permission_required = 'shoping.change_product'
 
     def get_success_url(self):
         return reverse('shoping:product_information', args=[self.kwargs.get('pk')])
@@ -148,11 +150,14 @@ class ProductUpdateView(UpdateView):
 
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
 
     model = Product
     form_class = ProductForm
+    permission_required = 'shoping.change_product'
     success_url = reverse_lazy('shoping:category_list')
+
+
 
     def form_valid(self, form):
         self.object = form.save()
@@ -174,3 +179,11 @@ class ProductCreateView(CreateView):
         return render(request, 'create_product.html', {'form': form})
 
 
+class ProductDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+    model = Product
+    permission_required = 'shoping.delete_product'
+    success_url = reverse_lazy('shoping:category_list')
+
+    def has_permission(self):
+        product = self.get_object()
+        return product.has_permission_to_delete(self.request.user)

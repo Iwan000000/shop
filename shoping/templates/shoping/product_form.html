@@ -31,13 +31,18 @@
                         </div>
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <button type="submit" class="btn btn-success">
-                            {% if object %}
-                                редактировать
-                            {% else %}
-                                сохранить
+
+                        {% if object %}
+                            <button type="submit" class="btn btn-success">редактировать</button>
+                            {% if perms.shoping.delete_product %}
+                                <button href="{% url 'shoping:delete_product' object.pk %}" type="submit"
+                                        class="btn btn-danger">Удалить
+                                </button>
                             {% endif %}
-                        </button>
+                        {% else %}
+                            <button type="submit" class="btn btn-success">сохранить</button>
+                        {% endif %}
+
                     </div>
                     <div class="card-footer">
                     </div>
