@@ -7,6 +7,7 @@ from crispy_forms.helper import FormHelper
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.http import Http404
 
 from shoping.models import Category, Product, Reviews, Version
 from shoping.forms import ProductForm, VersionForm
@@ -147,6 +148,15 @@ class ProductUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView)
         else:
             return self.form_invalid(form)
         return super().form_valid(form)
+
+
+
+    def get_object(self, queryset=None):
+        product = super().get_object(queryset=queryset)
+        if product.editor != self.request.user:
+            raise Http404("не твой товар")
+        else:
+            return product
 
 
 

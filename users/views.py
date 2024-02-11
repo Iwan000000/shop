@@ -9,6 +9,10 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import View
 from django.views.generic import CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+
+
 
 from config.settings import EMAIL_HOST_USER
 
@@ -42,7 +46,7 @@ class RegisterView(CreateView):
         )
         return super().form_valid(form)
 
-class ProfileView(UpdateView):
+class ProfileView(LoginRequiredMixin, UpdateView):
 
     model = User
     form_class = UserProfileForm
@@ -64,7 +68,7 @@ class EmailVerify(View):
             return redirect('product_list')
 
         return redirect('users:invalid_verify')
-
+@login_required
 def forgot_password(request):
     if request.method == 'POST':
         email = request.POST.get('user_email')
