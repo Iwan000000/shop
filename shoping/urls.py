@@ -1,13 +1,14 @@
 from django.urls import path
-from shoping.views import product_information, CategoryListView, ProductListView, ReviewsCreateView, \
+from django.views.decorators.cache import cache_page
+from shoping.views import product_information, category, ProductListView, ReviewsCreateView, \
     your_review, ReviewsUpdateView, ReviewsDeleteView, ReviewsDetailView, ReviewsListView, AllReviewsListView, ProductCreateView, ProductUpdateView, ProductDeleteView
 
 app_name = 'shoping'
 
 urlpatterns = [
-    path('', CategoryListView.as_view(), name="category_list"),
+    path('', category, name="category_list"),
     path('<int:pk>/', ProductListView.as_view(), name="product_list"),
-    path('<int:pk>/product_information/', product_information, name="product_information"),
+    path('<int:pk>/product_information/', cache_page(60)(product_information), name="product_information"),
     path('reviews/', ReviewsListView.as_view(), name="reviews"),
     path('all_reviews/', AllReviewsListView.as_view(), name="all_reviews"),
     path('<int:pk>/your_review/', your_review, name="your_review"),

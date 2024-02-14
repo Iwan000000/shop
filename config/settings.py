@@ -12,12 +12,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+load_dotenv(BASE_DIR / '.env')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -87,7 +88,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "shop",
         "USER": "postgres",
-        "PASSWORD": "1379",
+        "PASSWORD": os.getenv('DB_PASSWORD'),
         "HOST": "localhost",
         "PORT": 5432,
     }
@@ -153,10 +154,14 @@ EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = 'proffesor.09iwan@yandex.ru'
+EMAIL_HOST_PASSWORD = 'proffesor.09iwan@yandex.ru'
 
+CACHE_ENABLED = os.getenv('CACHE_ENABLED') == '1'
 
-CSRF_COOKIE_SECURE = False
-CSRF_COOKIE_HTTPONLY = True
-
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": os.getenv('CACHE_LOCATION'),
+    }
+}

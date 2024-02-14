@@ -12,14 +12,22 @@ from django.http import Http404
 from shoping.models import Category, Product, Reviews, Version
 from shoping.forms import ProductForm, VersionForm
 from pytils.translit import slugify
+from shoping.services import get_cached_categories
 
 
 
-class CategoryListView(ListView):
-    model = Category
-    extra_context = {
-        "title": "мясо свежее"
+# class CategoryListView(ListView):
+#     model = Category
+#     extra_context = {
+#         "title": "мясо свежее"
+#     }
+
+def category(request):
+    context = {
+        'object_list': get_cached_categories(),
+        'title': 'мясо свежее'
     }
+    return render(request, 'shoping/category_list.html', context)
 
 
 class ProductListView(ListView):
